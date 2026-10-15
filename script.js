@@ -38,3 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+const validHashes = ['#hero', '#about', '#features', '#faq'];
+if (window.location.hash && !validHashes.includes(window.location.hash)) {
+    // Cleanly rewrite URL back to base landing page without page reload
+    history.replaceState(null, '', window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
